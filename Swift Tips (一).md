@@ -29,22 +29,21 @@ class ViewController: UIViewController, MyClassProxy {
 
 ### Singleton
 ```
-private let sharedInstance = Singleton()
-
-class Singleton: NSObject {
-    class var shared: Singleton {
-        return sharedInstance
-    }
-    public func doSomeAction() {
-        print("========single do some action===========")
+class NetworkManager {
+    private static var networkManager: NetworkManager {
+        let network: NetworkManager = NetworkManager.init()
+        return network
     }
     
+    private init() {
+        
+    }
+    class func shared() -> NetworkManager {
+        return networkManager
+    }
 }
-
-let single: Singleton = Singleton.shared
-single.doSomeAction()
-
 ```
+
 ```
 class MyClass: NSObject {
     public func countNumnber(number: Int) -> Int {
@@ -209,5 +208,9 @@ class Beer: Drinking {
     }
 }
 ```
+
+
+
+
 
 
